@@ -1,0 +1,11 @@
+/home/ivampyy/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.deps.json
+/home/ivampyy/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.dll
+/home/ivampyy/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.pdb
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.AssemblyInfoInputs.cache
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.AssemblyInfo.cs
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.csproj.CoreCompileInputs.cache
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.dll
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/refint/Inventory.Domain.dll
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.pdb
+/home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/ref/Inventory.Domain.dll

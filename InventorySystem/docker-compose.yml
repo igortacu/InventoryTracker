@@ -1,0 +1,28 @@
+services:
+  sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: inv-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+  api:
+    build:
+      context: .
+      dockerfile: Inventory.Api/Dockerfile
+    container_name: inv-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # connection string via env (Program.cs reads it)
+      - ConnectionStrings__Default=Server=sql,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
+    depends_on:
+      - sql
+    ports:
+      - "5148:5148"
+
+volumes:
+  mssql_data:

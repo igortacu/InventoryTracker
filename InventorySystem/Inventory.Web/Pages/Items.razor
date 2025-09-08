@@ -1,0 +1,157 @@
+@page "/items"
+@using Inventory.Web.Models
+@inject Inventory.Web.Services.ItemsClient ItemsApi
+
+<h1>Items</h1>
+
+<div class="toolbar">
+  <input @bind="search" placeholder="Search" />
+  <button @onclick="Load">Search</button>
+  <span class="spacer"></span>
+  <label>Page</label>
+  <input type="number" min="1" style="width:70px" @bind="page" />
+  <label>Size</label>
+  <input type="number" min="1" style="width:70px" @bind="pageSize" />
+  <button @onclick="Load">Go</button>
+</div>
+
+<table class="grid">
+  <thead>
+    <tr>
+      <th>SKU</th><th>Name</th><th>Qty</th><th>Location</th><th>Min</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (items is null)
+    {
+      <tr><td colspan="6">Loading…</td></tr>
+    }
+    else if (items.Count == 0)
+    {
+      <tr><td colspan="6">No items</td></tr>
+    }
+    else
+    {
+      @foreach (var it in items)
+      {
+        <tr>
+          <td>@it.Sku</td>
+          <td>
+            @if (editing?.Id == it.Id)
+            {
+              <InputText @bind-Value="editing.Name" />
+            }
+            else { @it.Name }
+          </td>
+          <td class="center">@it.Quantity</td>
+          <td>
+            @if (editing?.Id == it.Id)
+            {
+              <InputText @bind-Value="editing.Location" />
+            }
+            else { @it.Location }
+          </td>
+          <td class="center">
+            @if (editing?.Id == it.Id)
+            {
+              <InputNumber @bind-Value="editing.MinStock" />
+            }
+            else { @it.MinStock }
+          </td>
+          <td class="nowrap">
+            <button @onclick="() => Adjust(it.Id, 1)">+1</button>
+            <button @onclick="() => Adjust(it.Id, -1)">-1</button>
+            @if (editing?.Id == it.Id)
+            {
+              <button @onclick="SaveEdit">Save</button>
+              <button @onclick="CancelEdit">Cancel</button>
+            }
+            else
+            {
+              <button @onclick="() => StartEdit(it)">Edit</button>
+              <button @onclick="() => Delete(it.Id)">Delete</button>
+            }
+          </td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
+
+<h3>Create</h3>
+<EditForm Model="create" OnValidSubmit="Create">
+  <div class="form">
+    <InputText @bind-Value="create.Sku" placeholder="SKU" />
+    <InputText @bind-Value="create.Name" placeholder="Name" />
+    <InputNumber @bind-Value="create.Quantity" />
+    <InputText @bind-Value="create.Location" placeholder="Location" />
+    <InputNumber @bind-Value="create.MinStock" />
+    <button type="submit">Add</button>
+  </div>
+</EditForm>
+
+<style>
+.toolbar{display:flex;gap:8px;align-items:center;margin:10px 0}
+.toolbar .spacer{flex:1}
+.grid{width:100%;border-collapse:collapse;margin:8px 0}
+.grid th,.grid td{border:1px solid #ddd;padding:6px}
+.grid .center{text-align:center}
+.grid .nowrap{white-space:nowrap}
+.form{display:flex;gap:8px;align-items:center}
+button{padding:6px 10px;border:1px solid #aaa;background:#f8f8f8;cursor:pointer}
+input{padding:6px;border:1px solid #ccc}
+</style>
+
+@code {
+    List<ItemDto>? items;
+    string? search = "";
+    int page = 1, pageSize = 20;
+
+    CreateItemRequest create = new() { Quantity = 1, Location = "MAIN", MinStock = 0 };
+
+    class EditModel { public Guid Id { get; set; } public string? Name { get; set; } public string? Location { get; set; } public int? MinStock { get; set; } }
+    EditModel? editing;
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    async Task Load()
+    {
+        items = (await ItemsApi.ListAsync(search, page, pageSize)).ToList();
+        StateHasChanged();
+    }
+
+    async Task Create()
+    {
+        var id = await ItemsApi.CreateAsync(create);
+        if (id is not null)
+        {
+            create = new() { Quantity = 1, Location = "MAIN", MinStock = 0 };
+            await Load();
+        }
+    }
+
+    void StartEdit(ItemDto it) =>
+        editing = new() { Id = it.Id, Name = it.Name, Location = it.Location, MinStock = it.MinStock };
+
+    async Task SaveEdit()
+    {
+        if (editing is null) return;
+        await ItemsApi.UpdateAsync(editing.Id, editing.Name, editing.Location, editing.MinStock);
+        editing = null;
+        await Load();
+    }
+
+    void CancelEdit() => editing = null;
+
+    async Task Delete(Guid id)
+    {
+        await ItemsApi.DeleteAsync(id);
+        await Load();
+    }
+
+    async Task Adjust(Guid id, int delta)
+    {
+        await ItemsApi.AdjustAsync(id, delta);
+        await Load();
+    }
+}

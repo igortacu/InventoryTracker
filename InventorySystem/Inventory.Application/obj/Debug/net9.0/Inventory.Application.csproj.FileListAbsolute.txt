@@ -1,0 +1,15 @@
+/home/ivampyy/InventorySystem/Inventory.Application/bin/Debug/net9.0/Inventory.Application.deps.json
+/home/ivampyy/InventorySystem/Inventory.Application/bin/Debug/net9.0/Inventory.Application.dll
+/home/ivampyy/InventorySystem/Inventory.Application/bin/Debug/net9.0/Inventory.Application.pdb
+/home/ivampyy/InventorySystem/Inventory.Application/bin/Debug/net9.0/Inventory.Domain.dll
+/home/ivampyy/InventorySystem/Inventory.Application/bin/Debug/net9.0/Inventory.Domain.pdb
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.csproj.AssemblyReference.cache
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.AssemblyInfoInputs.cache
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.AssemblyInfo.cs
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.csproj.CoreCompileInputs.cache
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventor.1DAC6D85.Up2Date
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.dll
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/refint/Inventory.Application.dll
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/Inventory.Application.pdb
+/home/ivampyy/InventorySystem/Inventory.Application/obj/Debug/net9.0/ref/Inventory.Application.dll
