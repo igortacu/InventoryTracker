@@ -29,6 +29,7 @@ A small, end-to-end **inventory tracker**:
 
 ## Project Layout
 
+```text
 InventorySystem/
 ├── Inventory.Domain/
 ├── Inventory.Application/
@@ -48,8 +49,10 @@ InventorySystem/
 │   │   ├── Items.razor
 │   │   └── Home.razor
 │   ├── Services/ItemsClient.cs
-│   └── wwwroot/appsettings.json 
+│   └── wwwroot/appsettings.json
 └── docker-compose.yml
+```
+
 
 
 
