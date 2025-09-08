@@ -11,3 +11,24 @@ End-to-end inventory tracker:
 - Docker / Docker Compose
 
 ## Project layout
+Inventory.Domain/
+Inventory.Application/ # CQRS (Commands/Queries) via MediatR
+Inventory.Infrastructure/ # EF Core DbContext, migrations
+Inventory.Api/ # Minimal API (runs on :5148), Swagger, CORS, health checks
+Inventory.Web/ # Blazor WASM client (dev server :5286)
+docker-compose.yml
+
+## Prerequisites
+- Docker & Docker Compose
+- .NET 9 SDK
+
+- ## Quick start (everything with Docker + local UI)
+
+1) **Bring up SQL + API**
+```bash
+cd InventorySystem
+docker compose up -d
+docker compose ps
+# expect:
+# inv-sql  → 1433:1433
+# inv-api  → 5148:5148
