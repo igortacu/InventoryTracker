@@ -8,7 +8,7 @@ A small, end-to-end **inventory tracker**:
 
 ---
 
-## ✨ Features
+## Features
 
 - Items **CRUD** (create, list with search + paging, update, delete)
 - **Adjust quantity** endpoint (+/−)
@@ -18,7 +18,7 @@ A small, end-to-end **inventory tracker**:
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 - **.NET 9**, **EF Core 9**, **MediatR 13**
 - **SQL Server 2022** (Linux container)
@@ -27,7 +27,7 @@ A small, end-to-end **inventory tracker**:
 
 ---
 
-## 📁 Project Layout
+## Project Layout
 
 InventorySystem/
 ├─ Inventory.Domain/ # Entities
@@ -45,7 +45,7 @@ InventorySystem/
 - Blazor dev: `http://localhost:5286`
 - SQL Server: `localhost:1433`
 
-## 🚀 Quick Start
+## Quick Start
 
 > **Prerequisites**  
 > - Docker & Docker Compose  
