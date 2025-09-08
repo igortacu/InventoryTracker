@@ -32,3 +32,6 @@ docker compose ps
 # expect:
 # inv-sql  → 1433:1433
 # inv-api  → 5148:5148
+
+
+2) Create/update DB schema (run once from host)
