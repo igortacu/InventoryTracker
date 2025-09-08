@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ivampyy/InventorySystem/Inventory.Api/Inventory.Api.csproj": {}
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Api/Inventory.Api.csproj": {}
   },
   "projects": {
-    "/home/ivampyy/InventorySystem/Inventory.Api/Inventory.Api.csproj": {
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Api/Inventory.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Api/Inventory.Api.csproj",
+        "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Api/Inventory.Api.csproj",
         "projectName": "Inventory.Api",
-        "projectPath": "/home/ivampyy/InventorySystem/Inventory.Api/Inventory.Api.csproj",
+        "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Api/Inventory.Api.csproj",
         "packagesPath": "/home/ivampyy/.nuget/packages/",
-        "outputPath": "/home/ivampyy/InventorySystem/Inventory.Api/obj/",
+        "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ivampyy/.nuget/NuGet/NuGet.Config"
@@ -27,11 +27,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
-                "projectPath": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj"
+              "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
+                "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj"
               },
-              "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj": {
-                "projectPath": "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj"
+              "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj": {
+                "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj"
               }
             }
           }
@@ -52,15 +52,23 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -86,14 +94,14 @@
         }
       }
     },
-    "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj",
+        "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj",
         "projectName": "Inventory.Application",
-        "projectPath": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj",
+        "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj",
         "packagesPath": "/home/ivampyy/.nuget/packages/",
-        "outputPath": "/home/ivampyy/InventorySystem/Inventory.Application/obj/",
+        "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ivampyy/.nuget/NuGet/NuGet.Config"
@@ -109,8 +117,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
-                "projectPath": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
+              "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
+                "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
               }
             }
           }
@@ -131,10 +139,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "FluentValidation": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
             "MediatR": {
               "target": "Package",
               "version": "[13.0.0, )"
@@ -164,14 +168,14 @@
         }
       }
     },
-    "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
+        "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
         "projectName": "Inventory.Domain",
-        "projectPath": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
+        "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
         "packagesPath": "/home/ivampyy/.nuget/packages/",
-        "outputPath": "/home/ivampyy/InventorySystem/Inventory.Domain/obj/",
+        "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ivampyy/.nuget/NuGet/NuGet.Config"
@@ -224,14 +228,14 @@
         }
       }
     },
-    "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj": {
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
+        "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
         "projectName": "Inventory.Infrastructure",
-        "projectPath": "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
+        "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
         "packagesPath": "/home/ivampyy/.nuget/packages/",
-        "outputPath": "/home/ivampyy/InventorySystem/Inventory.Infrastructure/obj/",
+        "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ivampyy/.nuget/NuGet/NuGet.Config"
@@ -247,11 +251,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
-                "projectPath": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj"
+              "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj": {
+                "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj"
               },
-              "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
-                "projectPath": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
+              "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
+                "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
               }
             }
           }
@@ -272,12 +276,7 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[9.0.8, )"
-            },
             "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.8, )"

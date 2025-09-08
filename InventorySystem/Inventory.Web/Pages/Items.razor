@@ -2,81 +2,79 @@
 @using Inventory.Web.Models
 @inject Inventory.Web.Services.ItemsClient ItemsApi
 
-<h1>Items</h1>
+<h1 class="title">Items</h1>
+
+@if (!string.IsNullOrEmpty(alert))
+{
+  <div class="@($"alert {(alertOk ? "ok" : "err")}")">@alert</div>
+}
 
 <div class="toolbar">
-  <input @bind="search" placeholder="Search" />
-  <button @onclick="Load">Search</button>
+  <input @bind="search" placeholder="Search SKU or Name" @oninput="DebouncedSearch" />
+  <button class="btn" @onclick="Load" disabled="@busy">Search</button>
   <span class="spacer"></span>
   <label>Page</label>
-  <input type="number" min="1" style="width:70px" @bind="page" />
+  <input type="number" min="1" class="n" @bind="page" />
   <label>Size</label>
-  <input type="number" min="1" style="width:70px" @bind="pageSize" />
-  <button @onclick="Load">Go</button>
+  <input type="number" min="1" class="n" @bind="pageSize" />
+  <button class="btn" @onclick="Load" disabled="@busy">Go</button>
 </div>
 
-<table class="grid">
-  <thead>
-    <tr>
-      <th>SKU</th><th>Name</th><th>Qty</th><th>Location</th><th>Min</th><th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @if (items is null)
-    {
-      <tr><td colspan="6">Loading…</td></tr>
-    }
-    else if (items.Count == 0)
-    {
-      <tr><td colspan="6">No items</td></tr>
-    }
-    else
-    {
-      @foreach (var it in items)
+@if (loadingFirst)
+{
+  <div class="skeleton">
+    <div class="row"></div><div class="row"></div><div class="row"></div>
+  </div>
+}
+else
+{
+  <table class="grid">
+    <thead>
+      <tr>
+        <th>SKU</th><th>Name</th><th>Qty</th><th>Location</th><th>Min</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (items.Count == 0)
       {
-        <tr>
-          <td>@it.Sku</td>
-          <td>
-            @if (editing?.Id == it.Id)
-            {
-              <InputText @bind-Value="editing.Name" />
-            }
-            else { @it.Name }
-          </td>
-          <td class="center">@it.Quantity</td>
-          <td>
-            @if (editing?.Id == it.Id)
-            {
-              <InputText @bind-Value="editing.Location" />
-            }
-            else { @it.Location }
-          </td>
-          <td class="center">
-            @if (editing?.Id == it.Id)
-            {
-              <InputNumber @bind-Value="editing.MinStock" />
-            }
-            else { @it.MinStock }
-          </td>
-          <td class="nowrap">
-            <button @onclick="() => Adjust(it.Id, 1)">+1</button>
-            <button @onclick="() => Adjust(it.Id, -1)">-1</button>
-            @if (editing?.Id == it.Id)
-            {
-              <button @onclick="SaveEdit">Save</button>
-              <button @onclick="CancelEdit">Cancel</button>
-            }
-            else
-            {
-              <button @onclick="() => StartEdit(it)">Edit</button>
-              <button @onclick="() => Delete(it.Id)">Delete</button>
-            }
-          </td>
-        </tr>
+        <tr><td colspan="6">No items</td></tr>
       }
-    }
-  </tbody>
-</table>
+      else
+      {
+        @foreach (var it in items)
+        {
+          <tr>
+            <td>@it.Sku</td>
+            <td>
+              @if (editing?.Id == it.Id) { <InputText @bind-Value="editing.Name" /> } else { @it.Name }
+            </td>
+            <td class="center">@it.Quantity</td>
+            <td>
+              @if (editing?.Id == it.Id) { <InputText @bind-Value="editing.Location" /> } else { @it.Location }
+            </td>
+            <td class="center">
+              @if (editing?.Id == it.Id) { <InputNumber @bind-Value="editing.MinStock" /> } else { @it.MinStock }
+            </td>
+            <td class="nowrap">
+              <button class="btn" @onclick="() => Adjust(it.Id, 1)" disabled="@busy">+1</button>
+              <button class="btn" @onclick="() => Adjust(it.Id, -1)" disabled="@busy">-1</button>
+              @if (editing?.Id == it.Id)
+              {
+                <button class="btn primary" @onclick="SaveEdit" disabled="@busy">Save</button>
+                <button class="btn" @onclick="CancelEdit" disabled="@busy">Cancel</button>
+              }
+              else
+              {
+                <button class="btn" @onclick="() => StartEdit(it)" disabled="@busy">Edit</button>
+                <button class="btn danger" @onclick="() => AskDelete(it)" disabled="@busy">Delete</button>
+              }
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+}
 
 <h3>Create</h3>
 <EditForm Model="create" OnValidSubmit="Create">
@@ -86,24 +84,51 @@
     <InputNumber @bind-Value="create.Quantity" />
     <InputText @bind-Value="create.Location" placeholder="Location" />
     <InputNumber @bind-Value="create.MinStock" />
-    <button type="submit">Add</button>
+    <button class="btn primary" type="submit" disabled="@busy">Add</button>
   </div>
 </EditForm>
 
+@if (confirmDelete is not null)
+{
+  <div class="modal">
+    <div class="card">
+      <h4>Delete item?</h4>
+      <p>@confirmDelete.Name (@confirmDelete.Sku)</p>
+      <div class="right">
+        <button class="btn danger" @onclick="ConfirmDelete" disabled="@busy">Yes</button>
+        <button class="btn" @onclick="CancelDelete" disabled="@busy">No</button>
+      </div>
+    </div>
+  </div>
+}
+
 <style>
+.title{margin:8px 0 4px}
 .toolbar{display:flex;gap:8px;align-items:center;margin:10px 0}
 .toolbar .spacer{flex:1}
-.grid{width:100%;border-collapse:collapse;margin:8px 0}
-.grid th,.grid td{border:1px solid #ddd;padding:6px}
+.n{width:72px}
+.grid{width:100%;border-collapse:collapse;margin:8px 0;background:#fff}
+.grid th,.grid td{border:1px solid #e5e5e5;padding:8px}
+.grid th{background:#fafafa;text-align:left}
 .grid .center{text-align:center}
 .grid .nowrap{white-space:nowrap}
 .form{display:flex;gap:8px;align-items:center}
-button{padding:6px 10px;border:1px solid #aaa;background:#f8f8f8;cursor:pointer}
-input{padding:6px;border:1px solid #ccc}
+input{padding:8px;border:1px solid #ccc;border-radius:6px}
+.btn{padding:8px 12px;border:1px solid #bbb;border-radius:6px;background:#f7f7f7;cursor:pointer}
+.btn.primary{background:#2563eb;color:#fff;border-color:#2563eb}
+.btn.danger{background:#dc2626;color:#fff;border-color:#dc2626}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+.alert{padding:10px;margin:10px 0;border-radius:8px}
+.alert.ok{background:#e8f5e9;border:1px solid #c8e6c9}
+.alert.err{background:#ffebee;border:1px solid #ffcdd2}
+.modal{position:fixed;inset:0;background:#0006;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;padding:16px;border-radius:10px;min-width:280px}
+.right{display:flex;gap:8px;justify-content:flex-end}
+.skeleton .row{height:38px;background:linear-gradient(90deg,#eee,#f6f6f6,#eee);margin:6px 0;border-radius:6px}
 </style>
 
 @code {
-    List<ItemDto>? items;
+    List<ItemDto> items = [];
     string? search = "";
     int page = 1, pageSize = 20;
 
@@ -112,22 +137,32 @@ input{padding:6px;border:1px solid #ccc}
     class EditModel { public Guid Id { get; set; } public string? Name { get; set; } public string? Location { get; set; } public int? MinStock { get; set; } }
     EditModel? editing;
 
+    ItemDto? confirmDelete;
+    bool busy;
+    bool loadingFirst = true;
+    string? alert; bool alertOk;
+
     protected override async Task OnInitializedAsync() => await Load();
 
     async Task Load()
     {
-        items = (await ItemsApi.ListAsync(search, page, pageSize)).ToList();
+        busy = true; StateHasChanged();
+        var res = await ItemsApi.ListAsync(search, page, pageSize);
+        busy = false; loadingFirst = false;
+        if (!res.Ok) { ShowErr(res.Error ?? "Load failed"); items = []; return; }
+        items = res.Data?.ToList() ?? [];
         StateHasChanged();
     }
 
     async Task Create()
     {
-        var id = await ItemsApi.CreateAsync(create);
-        if (id is not null)
-        {
-            create = new() { Quantity = 1, Location = "MAIN", MinStock = 0 };
-            await Load();
-        }
+        busy = true; StateHasChanged();
+        var res = await ItemsApi.CreateAsync(create);
+        busy = false;
+        if (!res.Ok) { ShowErr(res.Error ?? "Create failed"); return; }
+        create = new() { Quantity = 1, Location = "MAIN", MinStock = 0 };
+        ShowOk("Item created");
+        await Load();
     }
 
     void StartEdit(ItemDto it) =>
@@ -136,22 +171,52 @@ input{padding:6px;border:1px solid #ccc}
     async Task SaveEdit()
     {
         if (editing is null) return;
-        await ItemsApi.UpdateAsync(editing.Id, editing.Name, editing.Location, editing.MinStock);
+        busy = true; StateHasChanged();
+        var res = await ItemsApi.UpdateAsync(editing.Id, editing.Name, editing.Location, editing.MinStock);
+        busy = false;
+        if (!res.Ok) { ShowErr(res.Error ?? "Update failed"); return; }
         editing = null;
+        ShowOk("Item updated");
         await Load();
     }
 
     void CancelEdit() => editing = null;
 
-    async Task Delete(Guid id)
+    void AskDelete(ItemDto it) => confirmDelete = it;
+    void CancelDelete() => confirmDelete = null;
+
+    async Task ConfirmDelete()
     {
-        await ItemsApi.DeleteAsync(id);
+        if (confirmDelete is null) return;
+        busy = true; StateHasChanged();
+        var res = await ItemsApi.DeleteAsync(confirmDelete.Id);
+        busy = false;
+        if (!res.Ok) { ShowErr(res.Error ?? "Delete failed"); return; }
+        ShowOk("Item deleted");
+        confirmDelete = null;
         await Load();
     }
 
     async Task Adjust(Guid id, int delta)
     {
-        await ItemsApi.AdjustAsync(id, delta);
+        busy = true; StateHasChanged();
+        var res = await ItemsApi.AdjustAsync(id, delta);
+        busy = false;
+        if (!res.Ok) { ShowErr(res.Error ?? "Adjust failed"); return; }
+        ShowOk($"Quantity: {res.Data}");
         await Load();
     }
+
+    System.Timers.Timer? timer;
+    void DebouncedSearch(ChangeEventArgs _)
+    {
+        timer?.Stop();
+        timer ??= new System.Timers.Timer(350) { AutoReset = false };
+        timer.Elapsed += async (_, __) => await InvokeAsync(async () => { page = 1; await Load(); });
+        timer.Start();
+    }
+
+    void ShowOk(string m) { alertOk = true; alert = m; _ = HideAlert(); }
+    void ShowErr(string m) { alertOk = false; alert = m; _ = HideAlert(); }
+    async Task HideAlert() { await Task.Delay(2200); alert = null; StateHasChanged(); }
 }

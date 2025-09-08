@@ -1,18 +1,17 @@
-using Inventory.Application.Common;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.Application.Items.Commands;
 
-public record DeleteItem(Guid Id) : IRequest<bool>;
+public sealed record DeleteItem(Guid Id) : IRequest<bool>;
 
-public class DeleteItemHandler(IInventoryDbContext db) : IRequestHandler<DeleteItem, bool>
+public sealed class DeleteItemHandler(IInventoryDbContext db) : IRequestHandler<DeleteItem, bool>
 {
     public async Task<bool> Handle(DeleteItem req, CancellationToken ct)
     {
-        var e = await db.Items.FindAsync([req.Id], ct);
-        if (e is null) return false;
-
-        db.Items.Remove(e);
+        var it = await db.Items.FirstOrDefaultAsync(x => x.Id == req.Id, ct);
+        if (it is null) return false;
+        db.Items.Remove(it);
         await db.SaveChangesAsync(ct);
         return true;
     }

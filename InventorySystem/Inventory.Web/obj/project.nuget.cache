@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+ROU9U5o2p4=",
+  "dgSpecHash": "+Vg4j6RQSOo=",
   "success": true,
-  "projectFilePath": "/home/ivampyy/InventorySystem/Inventory.Web/Inventory.Web.csproj",
+  "projectFilePath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Web/Inventory.Web.csproj",
   "expectedPackageFiles": [
     "/home/ivampyy/.nuget/packages/microsoft.aspnetcore.authorization/9.0.8/microsoft.aspnetcore.authorization.9.0.8.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/microsoft.aspnetcore.components/9.0.8/microsoft.aspnetcore.components.9.0.8.nupkg.sha512",

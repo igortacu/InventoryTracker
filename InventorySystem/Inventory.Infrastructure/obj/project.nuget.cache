@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "WIHP5BtJhJ4=",
+  "dgSpecHash": "ms/8HwiGomg=",
   "success": true,
-  "projectFilePath": "/home/ivampyy/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
+  "projectFilePath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Infrastructure/Inventory.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/ivampyy/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
-    "/home/ivampyy/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",

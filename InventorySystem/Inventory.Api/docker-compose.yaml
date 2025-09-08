@@ -5,23 +5,24 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
-    ports:
-      - "1433:1433"
-    volumes:
-      - mssql_data:/var/opt/mssql
+    ports: ["1433:1433"]
+    volumes: ["mssql_data:/var/opt/mssql"]
+    restart: unless-stopped
 
   api:
     build:
       context: .
       dockerfile: Inventory.Api/Dockerfile
+    image: inventorysystem-api
     container_name: inv-api
+    depends_on: [sql]
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5148
+      - URLS=http://0.0.0.0:5148
       - ConnectionStrings__Default=Server=sql,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
-    depends_on:
-      - sql
-    ports:
-      - "5148:5148"
+    ports: ["5148:5148"]
+    restart: unless-stopped
 
 volumes:
   mssql_data:

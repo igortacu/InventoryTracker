@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "GdobISQntAE=",
+  "dgSpecHash": "0DHYuSkYkHs=",
   "success": true,
-  "projectFilePath": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj",
+  "projectFilePath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj",
   "expectedPackageFiles": [
-    "/home/ivampyy/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/home/ivampyy/.nuget/packages/microsoft.entityframeworkcore/9.0.8/microsoft.entityframeworkcore.9.0.8.nupkg.sha512",

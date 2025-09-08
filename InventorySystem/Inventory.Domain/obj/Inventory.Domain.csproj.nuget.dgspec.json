@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {}
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {}
   },
   "projects": {
-    "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
+    "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
+        "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
         "projectName": "Inventory.Domain",
-        "projectPath": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
+        "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj",
         "packagesPath": "/home/ivampyy/.nuget/packages/",
-        "outputPath": "/home/ivampyy/InventorySystem/Inventory.Domain/obj/",
+        "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ivampyy/.nuget/NuGet/NuGet.Config"

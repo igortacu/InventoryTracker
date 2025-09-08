@@ -1,26 +1,26 @@
-using Inventory.Application.Common;
-using Inventory.Domain.Entities;
+using Inventory.Domain;
 using MediatR;
 
 namespace Inventory.Application.Items.Commands;
 
-public record CreateItem(string Sku, string Name, int Quantity, string? Location, int? MinStock) : IRequest<Guid>;
+public sealed record CreateItem(string Sku, string Name, int Quantity, string? Location, int? MinStock) : IRequest<Guid>;
 
-public class CreateItemHandler(IInventoryDbContext db) : IRequestHandler<CreateItem, Guid>
+public sealed class CreateItemHandler(IInventoryDbContext db) : IRequestHandler<CreateItem, Guid>
 {
     public async Task<Guid> Handle(CreateItem req, CancellationToken ct)
     {
-        var e = new Item
+        var entity = new Item
         {
-            Sku = req.Sku.Trim(),
-            Name = req.Name.Trim(),
+            Id = Guid.NewGuid(),
+            Sku = req.Sku,
+            Name = req.Name,
             Quantity = req.Quantity,
-            Location = string.IsNullOrWhiteSpace(req.Location) ? "MAIN" : req.Location!.Trim(),
-            MinStock = req.MinStock ?? 0
+            Location = req.Location ?? "",
+            MinStock = req.MinStock ?? 0,
+            UpdatedAt = DateTime.UtcNow
         };
-
-        db.Items.Add(e);
+        db.Items.Add(entity);
         await db.SaveChangesAsync(ct);
-        return e.Id;
+        return entity.Id;
     }
 }

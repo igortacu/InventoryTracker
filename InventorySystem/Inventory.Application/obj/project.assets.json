@@ -2,19 +2,6 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "FluentValidation/12.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/FluentValidation.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/FluentValidation.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "MediatR/13.0.0": {
         "type": "package",
         "dependencies": {
@@ -312,21 +299,6 @@
     }
   },
   "libraries": {
-    "FluentValidation/12.0.0": {
-      "sha512": "8NVLxtMUXynRHJIX3Hn1ACovaqZIJASufXIIFkD0EUbcd5PmMsL1xUD5h548gCezJ5BzlITaR9CAMrGe29aWpA==",
-      "type": "package",
-      "path": "fluentvalidation/12.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "fluent-validation-icon.png",
-        "fluentvalidation.12.0.0.nupkg.sha512",
-        "fluentvalidation.nuspec",
-        "lib/net8.0/FluentValidation.dll",
-        "lib/net8.0/FluentValidation.xml"
-      ]
-    },
     "MediatR/13.0.0": {
       "sha512": "gR5vSoIINsXs86we38qdIfG62f6ngxT2sSaePsakJGHJIgLUDA7b41lujGXGWxX0hWyk8suajr2VKcAYSVMtdw==",
       "type": "package",
@@ -796,7 +768,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "FluentValidation >= 12.0.0",
       "Inventory.Domain >= 1.0.0",
       "MediatR >= 13.0.0",
       "Microsoft.EntityFrameworkCore >= 9.0.8"
@@ -808,11 +779,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj",
+      "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj",
       "projectName": "Inventory.Application",
-      "projectPath": "/home/ivampyy/InventorySystem/Inventory.Application/Inventory.Application.csproj",
+      "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/Inventory.Application.csproj",
       "packagesPath": "/home/ivampyy/.nuget/packages/",
-      "outputPath": "/home/ivampyy/InventorySystem/Inventory.Application/obj/",
+      "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ivampyy/.nuget/NuGet/NuGet.Config"
@@ -828,8 +799,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
-              "projectPath": "/home/ivampyy/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
+            "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj": {
+              "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/Inventory.Domain.csproj"
             }
           }
         }
@@ -850,10 +821,6 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
-          "FluentValidation": {
-            "target": "Package",
-            "version": "[12.0.0, )"
-          },
           "MediatR": {
             "target": "Package",
             "version": "[13.0.0, )"

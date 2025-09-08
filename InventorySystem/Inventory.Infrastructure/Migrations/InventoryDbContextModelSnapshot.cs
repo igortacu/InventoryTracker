@@ -22,7 +22,7 @@ namespace Inventory.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Inventory.Domain.Entities.Item", b =>
+            modelBuilder.Entity("Inventory.Domain.Item", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,9 @@ namespace Inventory.Infrastructure.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<int>("MinStock")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -50,14 +52,11 @@ namespace Inventory.Infrastructure.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("SYSUTCDATETIME()");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Sku")
-                        .IsUnique();
+                    b.HasIndex("Sku");
 
                     b.ToTable("Items");
                 });

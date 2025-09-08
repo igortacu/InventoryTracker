@@ -1745,11 +1745,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ivampyy/InventorySystem/Inventory.Web/Inventory.Web.csproj",
+      "projectUniqueName": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Web/Inventory.Web.csproj",
       "projectName": "Inventory.Web",
-      "projectPath": "/home/ivampyy/InventorySystem/Inventory.Web/Inventory.Web.csproj",
+      "projectPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Web/Inventory.Web.csproj",
       "packagesPath": "/home/ivampyy/.nuget/packages/",
-      "outputPath": "/home/ivampyy/InventorySystem/Inventory.Web/obj/",
+      "outputPath": "/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Web/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ivampyy/.nuget/NuGet/NuGet.Config"

@@ -9,3 +9,15 @@
 /home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/refint/Inventory.Domain.dll
 /home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.pdb
 /home/ivampyy/InventorySystem/Inventory.Domain/obj/Debug/net9.0/ref/Inventory.Domain.dll
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.deps.json
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.dll
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/bin/Debug/net9.0/Inventory.Domain.pdb
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.AssemblyInfoInputs.cache
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.AssemblyInfo.cs
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.csproj.CoreCompileInputs.cache
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.sourcelink.json
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.dll
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/refint/Inventory.Domain.dll
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/Inventory.Domain.pdb
+/home/ivampyy/Desktop/InventoryTracker/InventorySystem/Inventory.Domain/obj/Debug/net9.0/ref/Inventory.Domain.dll

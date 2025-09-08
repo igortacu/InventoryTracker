@@ -20,8 +20,8 @@ namespace Inventory.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    MinStock = table.Column<int>(type: "int", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "SYSUTCDATETIME()")
+                    MinStock = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,8 +31,7 @@ namespace Inventory.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Items_Sku",
                 table: "Items",
-                column: "Sku",
-                unique: true);
+                column: "Sku");
         }
 
         /// <inheritdoc />

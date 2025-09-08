@@ -8,36 +8,20 @@ public class DesignTimeFactory : IDesignTimeDbContextFactory<InventoryDbContext>
 {
     public InventoryDbContext CreateDbContext(string[] args)
     {
-        var basePath = Directory.GetCurrentDirectory();
+        var cfg = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true)
+            .AddJsonFile("appsettings.Development.json", optional: true)
+            .AddEnvironmentVariables()
+            .Build();
 
-        // Try both common locations when you run `dotnet ef` from root or from project
-        var candidates = new[]
-        {
-            Path.Combine(basePath, "Inventory.Api", "appsettings.json"),
-            Path.Combine(basePath, "..", "Inventory.Api", "appsettings.json"),
-        };
+        var cs = cfg.GetConnectionString("Default")
+                 ?? cfg["ConnectionStrings:Default"]
+                 ?? "Server=localhost,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;";
 
-        var cfgBuilder = new ConfigurationBuilder().SetBasePath(basePath);
-
-        foreach (var p in candidates)
-            if (File.Exists(p))
-            {
-                cfgBuilder.AddJsonFile(p, optional: true);
-                break;
-            }
-
-        cfgBuilder.AddEnvironmentVariables();
-        var cfg = cfgBuilder.Build();
-
-        var connString =
-            cfg.GetConnectionString("Default")
-            ?? Environment.GetEnvironmentVariable("ConnectionStrings__Default")
-            ?? "Server=localhost,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;";
-
-        var options = new DbContextOptionsBuilder<InventoryDbContext>()
-            .UseSqlServer(connString)
+        var opt = new DbContextOptionsBuilder<InventoryDbContext>()
+            .UseSqlServer(cs)
             .Options;
 
-        return new InventoryDbContext(options);
+        return new InventoryDbContext(opt);
     }
 }
