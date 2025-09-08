@@ -29,9 +29,21 @@ docker-compose.yml
 cd InventorySystem
 docker compose up -d
 docker compose ps
-# expect:
-# inv-sql  → 1433:1433
-# inv-api  → 5148:5148
+```
 
 
-2) Create/update DB schema (run once from host)
+2) **Create/update DB schema (run once from host)**
+   export ConnectionStrings__Default='Server=localhost,1433;Database=InventoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;'
+dotnet ef database update -p Inventory.Infrastructure -s Inventory.Api
+
+The API (in Docker) uses Server=sql,1433 via compose env; the CLI (from host) uses localhost,1433.
+3) **Verify API**
+```bash
+curl -i http://localhost:5148/
+curl -i http://localhost:5148/healthz/db
+curl -i -H "Origin: http://localhost:5286" \
+```
+4) **Run the Blazor WASM**
+```bash
+dotnet watch run --project Inventory.Web
+```
