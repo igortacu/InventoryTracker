@@ -30,12 +30,27 @@ A small, end-to-end **inventory tracker**:
 ## Project Layout
 
 InventorySystem/
-├─ Inventory.Domain/ # Entities
-├─ Inventory.Application/ # CQRS (Commands/Queries) with MediatR
-├─ Inventory.Infrastructure/ # EF Core DbContext + Migrations
-├─ Inventory.Api/ # Minimal API (:5148), Swagger, CORS, health
-├─ Inventory.Web/ # Blazor WASM client (dev server :5286)
-└─ docker-compose.yml
+├── Inventory.Domain/
+├── Inventory.Application/
+│   ├── Items/
+│   │   ├── Commands/
+│   │   └── Queries/
+│   └── IInventoryDbContext.cs
+├── Inventory.Infrastructure/
+│   ├── InventoryDbContext.cs
+│   └── Migrations/
+├── Inventory.Api/
+│   ├── Program.cs
+│   ├── Properties/launchSettings.json
+│   └── Dockerfile
+├── Inventory.Web/
+│   ├── Pages/
+│   │   ├── Items.razor
+│   │   └── Home.razor
+│   ├── Services/ItemsClient.cs
+│   └── wwwroot/appsettings.json 
+└── docker-compose.yml
+
 
 
 
